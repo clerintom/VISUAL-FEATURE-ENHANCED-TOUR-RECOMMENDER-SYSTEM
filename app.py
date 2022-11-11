@@ -24,7 +24,7 @@ def retrieve_most_similar_products(image_name , cos_similarities_df):
     #st.write(closest_imgs.tolist()) 
     for index, value in closest_imgs.items():
        #st.write(f"Index : {index}, Value : {value}")
-       closes_images_list.append(index.replace('/content/drive/MyDrive/style/',''))
+       closes_images_list.append(index)
        match_score.append(value)
 
     return closes_images_list , match_score
@@ -37,7 +37,7 @@ similarity = pickle.load(open('similarity.pkl','rb'))
 uploaded_file = st.file_uploader("Upload an Image",type=["png","jpg","jpeg"])
 
 if uploaded_file:
-   file_name = f"/content/drive/MyDrive/style/{uploaded_file.name}"
+   file_name = uploaded_file.name
    print(f"file name = {file_name}")
 
 if st.button('Show Recommendation'):
